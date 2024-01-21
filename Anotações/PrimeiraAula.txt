@@ -9,3 +9,20 @@ Dentro da função de callback de createServer, defina as variáveis req e res.
 Escreva o cabeçalho da resposta utilizando o método writeHead de res. O status deve ser 200 e o tipo de conteúdo deve ser text/plain.
 Termine a resposta utilizando o método end de res. O conteúdo deve ser "Curso de Node.js".
 No final do arquivo, chame o método listen de server passando a constante PORT como argumento e uma função de callback que imprime servidor escutando! no console.
+
+
+
+npm instal dotenv 
+PARA UTILIZAR O .env NA CONFIGURAÇÃO DO PROJETO CRIAR ARQUIVO NA RAIZ DO PROJETO.
+Voltando ao interior do arquivo .env, vamos criar o nome dessa variável. O padrão é escrever tudo em letras maiúsculas e com underline (_), portanto, criaremos a DB_CONNECTION_STRING. Ela receberá a string de conexão que vamos colar, sem a necessidade das aspas duplas.
+
+EXEMPLO DA AULA: DB_CONNECTION_STRING=mongodb+srv://admin: admin123@cluster0.uvmwiwx.mongodb.net/livraria?retryWrites=true&w=majority;
+
+EM SEGUIDA IMPORT NO SERVE.JS
+import "dotenv/config".
+
+POR FIM IMPORTE NA CONEXAO: 
+async function conectaNaDatabase() {
+    mongoose.connect(process.env.DB_CONNECTION_STRING);
+    return mongoose.connection;
+};
