@@ -1,5 +1,5 @@
 import livro from "../models/Livro.js";
-import { autor } from "../models/Autor.js"
+import { autor } from "../models/Autor.js";
 
 class LivroController {
 
@@ -9,14 +9,14 @@ class LivroController {
       res.status(200).json(listaLivros);
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - falha na requisição` });
-    };
+    }
   }
 
   static async cadastrarLivro(req, res) {
     const novoLivro = req.body;
     try {
       const autorEncontrado = await autor.findById(novoLivro.autor);
-      const livroCompleto = {...novoLivro, autor: {...autorEncontrado._doc}}
+      const livroCompleto = {...novoLivro, autor: {...autorEncontrado._doc}};
       const livroCriado = await livro.create(livroCompleto);
       res.status(201).json({ message: "criado com sucesso", livro: livroCriado });
     } catch (erro) {
@@ -31,7 +31,7 @@ class LivroController {
       res.status(200).json(livroEncontrado);
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - Falha na requisição do livro` });
-    };
+    }
   }
 
   static async atualizarLivro(req, res) {
@@ -42,7 +42,7 @@ class LivroController {
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - Falha na atualização do livro` });
     }
-  };
+  }
 
   static async excluirLivro (req, res) {
     try {
@@ -52,7 +52,7 @@ class LivroController {
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - Falha na exclusão do livro` });
     }
-  };
+  }
 
   static async listarLivroPorEditor (req, res) {
     const editora = req.query.editora;
@@ -63,6 +63,6 @@ class LivroController {
       res.status(500).json({ message: `${erro.message} - Falha na busca da editora.` });
     }
   }
-};
+}
 
-export default LivroController
+export default LivroController;

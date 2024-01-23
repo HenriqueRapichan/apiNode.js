@@ -8,7 +8,7 @@ class AutorController {
       res.status(200).json(listaAutores);
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - falha na requisição` });
-    };
+    }
   }
 
   static async cadastrarAutor(req, res) {
@@ -27,7 +27,7 @@ class AutorController {
       res.status(200).json(autorEncontrado);
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - Falha na requisição de listar autor` });
-    };
+    }
   }
 
   static async atualizarAutor(req, res) {
@@ -38,7 +38,7 @@ class AutorController {
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - Falha na atualização` });
     }
-  };
+  }
 
   static async excluirAutor (req, res) {
     try {
@@ -48,7 +48,7 @@ class AutorController {
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - falha na exclusão do autor` });
     }
-  };
-};
+  }
+}
 
-export default AutorController
+export default AutorController;
